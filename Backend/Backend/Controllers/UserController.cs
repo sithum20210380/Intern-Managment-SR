@@ -90,6 +90,29 @@ namespace Backend.Controllers
             }
         }
 
+        [HttpPut("updateinternprofile/{id}")]
+        public async Task<IActionResult> UpdateInternProfileAsync(int id, InternProfileModel model)
+        {
+            var result = await _userService.UpdateInternProfileAsync(id, model);
+            if (result > 0)
+            {
+                return Ok($"Intern profile with ID {result} updated successfully.");
+            }
+            return NotFound("Intern profile not found.");
+        }
+
+        [HttpDelete("deleteinternprofile/{id}")]
+        public async Task<IActionResult> DeleteInternProfileAsync(int id)
+        {
+            var result = await _userService.DeleteInternProfileAsync(id);
+            if (result > 0)
+            {
+                return Ok($"Intern profile with ID {result} deleted successfully.");
+            }
+            return NotFound("Intern profile not found.");
+        }
+
+
 
         [HttpPost("createevaluationform")]
         public async Task<IActionResult> CreateEvaluationFormAsync(EvaluationFormModel model)
@@ -101,5 +124,59 @@ namespace Backend.Controllers
             }
             return BadRequest("Failed to create evaluation form.");
         }
+
+        [HttpPost("createOrganization")]
+        public async Task<IActionResult> CreateOrganizationAsync(OrganizationsModel model)
+        {
+            try
+            {
+                var result = await _userService.CreateOrganizationAsync(model);
+                if (result > 0)
+                {
+                    return Ok($"Organization created with ID: {result}");
+                }
+
+                return BadRequest("Failed to create Organization.");
+            }
+            catch (Exception ex)
+            {
+                // Return the inner exception message and stack trace for more details
+                var errorMessage = ex.InnerException?.Message ?? "An error occurred while saving changes.";
+                var stackTrace = ex.StackTrace;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = errorMessage, StackTrace = stackTrace });
+            }
+
+        }
+
+        [HttpGet("GetOrganization")]
+        public async Task<IActionResult> GetOrganizationAsync()
+        {
+            try
+            {
+                // Fetch Organizations from the database using your _userService or _dbContext
+                var Organizations = await _userService.GetOrganizationAsync();
+
+                // Check if any profiles were found
+                if (Organizations != null && Organizations.Any())
+                {
+                    return Ok(Organizations);
+                }
+
+                return NotFound("No Organizations found.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                // logger.LogError(ex, "Error while fetching Organizations");
+
+                // Return the inner exception message and stack trace for more details
+                var errorMessage = ex.InnerException?.Message ?? "An error occurred while fetching Organizations.";
+                var stackTrace = ex.StackTrace;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = errorMessage, StackTrace = stackTrace });
+            }
+        }
+
     }
 }

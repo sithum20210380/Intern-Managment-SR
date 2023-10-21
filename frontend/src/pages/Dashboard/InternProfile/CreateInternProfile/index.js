@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './styles.sass'
+import {createInternProfile} from '../../../../API/internProfile.api';
+
 
 const InternProfile = () => {
   // State variable to handle errors
@@ -22,6 +24,7 @@ const InternProfile = () => {
     AssignedTeam: '',
     Mentor: '',
     UploadCV: '',
+    Status: '',
   });
 
   // Function to clear all input fields
@@ -42,6 +45,7 @@ const InternProfile = () => {
       AssignedTeam: '',
       Mentor: '',
       UploadCV: '',
+      Status: '',
     });
     setError(null); // Clear any previous errors
   };
@@ -58,26 +62,12 @@ const InternProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('https://localhost:7066/api/User/createinternprofile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log('Intern profile created successfully');
-        setError(null); // Clear any previous errors
-      } else {
-        // Handle errors and display error message
-        const errorData = await response.json();
-        setError(errorData.message || 'Failed to create intern profile');
-      }
-    } catch (error) {
-      console.error('An error occurred', error);
-      setError('An error occurred while submitting the form');
+    const errorMessage = await createInternProfile(formData);
+    if (!errorMessage) {
+      console.log('Intern profile created successfully');
+      setError(null);
+    } else {
+      setError(errorMessage);
     }
   };
 
@@ -224,6 +214,16 @@ const InternProfile = () => {
               type="text"
               name="Mentor"
               value={formData.Mentor}
+              onChange={handleInputChange}
+              className="intern-profile-input"
+            />
+          </div>
+          <div>
+            <label className="intern-profile-label">Status:</label>
+            <input
+              type="text"
+              name="Status"
+              value={formData.Status}
               onChange={handleInputChange}
               className="intern-profile-input"
             />

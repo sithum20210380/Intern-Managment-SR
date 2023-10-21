@@ -53,7 +53,7 @@ const Sidebar = () => {
           <Link to="/users">Users</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<AppstoreAddOutlined />}>
-          Organizations
+          <Link to="/organizations"></Link>Organizations
         </Menu.Item>
         <Menu.Item key="4" icon={<AppstoreAddOutlined />}>
           Logout

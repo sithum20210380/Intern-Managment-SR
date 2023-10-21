@@ -183,7 +183,7 @@ namespace Backend.Services
                     AssignedTeam = model.AssignedTeam,
                     Mentor = model.Mentor,
                     UploadCV = model.UploadCV,
-                    //Status = model.Status
+                    Status = model.Status
                 };
 
                 _dbContext.InternProfiles.Add(internProfile);
@@ -201,15 +201,81 @@ namespace Backend.Services
         {
             try
             {
-                // Fetch intern profiles from the database using your _dbContext
+                // Fetch intern profiles from the database
                 var internProfiles = await _dbContext.InternProfiles.ToListAsync();
 
                 return internProfiles;
             }
             catch (Exception ex)
             {
-                // Handle exceptions and log them as needed
                 throw;
+            }
+        }
+
+        public async Task<int> UpdateInternProfileAsync(int id, InternProfileModel model)
+        {
+            try
+            {
+                // Find the existing intern profile by ID
+                var existingProfile = await _dbContext.InternProfiles.FindAsync(id);
+
+                if (existingProfile == null)
+                {
+                    return -1; // Profile not found
+                }
+
+                // Update the profile properties
+                existingProfile.Name = model.Name;
+                existingProfile.University = model.University;
+                existingProfile.Email = model.Email;
+                existingProfile.InterviewScore = model.InterviewScore;
+                existingProfile.InterviewFeedback = model.InterviewFeedback;
+                existingProfile.Evolution1Score = model.Evolution1Score;
+                existingProfile.Evolution1Feedback = model.Evolution1Feedback;
+                existingProfile.Evolution2Score = model.Evolution2Score;
+                existingProfile.Evolution2Feedback = model.Evolution2Feedback;
+                existingProfile.Accomplishments = model.Accomplishments;
+                existingProfile.GPA = model.GPA;
+                existingProfile.ProjectDetails = model.ProjectDetails;
+                existingProfile.AssignedTeam = model.AssignedTeam;
+                existingProfile.Mentor = model.Mentor;
+                existingProfile.UploadCV = model.UploadCV;
+                existingProfile.Status = model.Status;
+                
+
+                _dbContext.InternProfiles.Update(existingProfile);
+                await _dbContext.SaveChangesAsync();
+
+                return existingProfile.Id;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions and return an error code if needed
+                return -1;
+            }
+        }
+
+        public async Task<int> DeleteInternProfileAsync(int id)
+        {
+            try
+            {
+                // Find the existing intern profile by ID
+                var existingProfile = await _dbContext.InternProfiles.FindAsync(id);
+
+                if (existingProfile == null)
+                {
+                    return -1; // Profile not found
+                }
+
+                _dbContext.InternProfiles.Remove(existingProfile);
+                await _dbContext.SaveChangesAsync();
+
+                return id;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions and return an error code if needed
+                return -1;
             }
         }
 
@@ -240,6 +306,49 @@ namespace Backend.Services
             _dbContext.EvaluationForms.Add(evaluationForm);
             await _dbContext.SaveChangesAsync();
             return evaluationForm.Id;
+        }
+
+        public async Task<int> CreateOrganizationAsync(OrganizationsModel model)
+        {
+            try
+            {
+                // Check if an organization with the same name already exists
+                //var existingProfile = await _dbContext.Organizations.FindAsync(model.CompanyName);
+
+                //if (existingProfile != null)
+                //{
+                //    return -1;
+                //}
+
+                var organizationProfile = new OrganizationsModel
+                {
+                    CompanyName = model.CompanyName
+                };
+
+                _dbContext.Organizations.Add(organizationProfile);
+                await _dbContext.SaveChangesAsync();
+                return organizationProfile.Id;
+            }
+            catch (Exception ex)
+            {
+                // Return null to indicate a failure
+                return -1;
+            }
+        }
+
+        public async Task<IEnumerable<OrganizationsModel>> GetOrganizationAsync()
+        {
+            try
+            {
+                // Fetch intern profiles from the database
+                var organizationProfile = await _dbContext.Organizations.ToListAsync();
+
+                return organizationProfile;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

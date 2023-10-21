@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { Layout, Button, Spin } from 'antd';
 
-import InternProfile from '../InternProfile';
-import ViewInterns from '../ViewInterns';
+import InternProfile from '../InternProfile/CreateInternProfile';
+import ViewInterns from '../InternProfile/ViewInterns';
 
 import './styles.sass';
 

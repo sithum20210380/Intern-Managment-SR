@@ -31,18 +31,6 @@ namespace Backend.Models
         public string AssignedTeam { get; set; }
         public string Mentor { get; set; }
         public string UploadCV { get; set; }
-
-        //[EnumDataType(typeof(InternshipStatus))]
-        //public InternshipStatus Status { get; set; }
+        public string Status { get; set; }
     }
-    //public enum InternshipStatus
-    //{
-    //    Pending,
-    //    InterviewScheduled,
-    //    InterviewComplete,
-    //    Hired,
-    //    Rejected,
-    //    InternshipStarted,
-    //    InternshipEnded
-    //}
 }

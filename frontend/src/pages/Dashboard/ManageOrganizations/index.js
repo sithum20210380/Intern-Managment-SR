@@ -1,45 +1,72 @@
 import React, { useState } from 'react';
-import { Card, Modal } from 'antd';
+import { Layout, Button, Spin } from 'antd';
 
-const { Meta } = Card;
+import ViewOrganization from './ViewOrganization';
+import AddOrganization from './AddOrganization';
+
+const { Content } = Layout;
 
 const ManageOrganizations = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [showOrganizations, setshowOrganizations] = useState(false);
+  const [AddOrganizations, setAddOrganization] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
+
+  // Function to toggle the visibility of Organiaztions
+  const showOrganizationsOption = () => {
+    setIsLoading(true); // Show loader
+    setTimeout(() => {
+      setshowOrganizations(!showOrganizations);
+      setIsLoading(false); // Hide loader
+      setAddOrganization(false);
+    }, 1000);
   };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  // Function to toggle the visibility of AddOrganization
+  const AddOrganizationOption = () => {
+    setAddOrganization(!AddOrganizations);
+    setAddOrganization(true);
+    setshowOrganizations(false);
+  };
+
+  // Function to go back to the main Admin Dashboard
+  const goBack = () => {
+    setshowOrganizations(false);
+    setAddOrganization(false);
   };
 
   return (
-    <>
-      <Card
-        hoverable
-        style={{
-          width: 240,
-        }}
-        onClick={showModal}
-        cover={<img alt="example" src="https://cdn-icons-png.flaticon.com/512/7486/7486692.png" />}
-      >
-        <Meta title="Manage Organizations" />
-      </Card>
-
-      <Modal
-        title="Manage Organizations"
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={null} // You can customize the footer if needed
-      >
-        {/* Your form content goes here */}
-        {/* Replace this with your actual form */}
-        <form>
-          {/* Form fields go here */}
-        </form>
-      </Modal>
-    </>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Layout>
+        <Content style={{ margin: '16px' }}>
+          <div className='admin-options'>
+            <h1>Organization Manage</h1>
+            {showOrganizations || AddOrganizations ? (
+              <button onClick={goBack}>Back</button>
+            ) : (
+              <>
+                <Button onClick={AddOrganizationOption}>
+                  Create Organization
+                </Button>
+                <Button onClick={showOrganizationsOption}>
+                  View Organization
+                </Button>
+              </>
+            )}
+          </div>
+          {isLoading ? (
+            <div className='view-intern-spin'>
+              <Spin size="large" tip="Loading..."/>
+            </div>
+          ) : (
+            <>
+              {showOrganizations && <ViewOrganization />}
+              {AddOrganizations && <AddOrganization/>}
+            </>
+          )}
+        </Content>
+      </Layout>
+    </Layout>
   );
 };
 
