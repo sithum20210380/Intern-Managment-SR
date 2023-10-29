@@ -59,11 +59,11 @@ const Sidebar = () => {
         )}
       </div>
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-        <Menu.Item key="1" icon={<DashboardOutlined />}>
-          <Link to="/adminDashboard">Dashboard</Link>
-        </Menu.Item>
-        <Menu.Item key="2" icon={<UserOutlined />}>
+        <Menu.Item key="1" icon={<UserOutlined />}>
           <Link to="/users">Users</Link>
+        </Menu.Item>
+        <Menu.Item key="2" icon={<DashboardOutlined />}>
+          <Link to="/internProfiles">Intern Profile</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<AppstoreAddOutlined />}>
           <Link to="/organizations">Organizations</Link>

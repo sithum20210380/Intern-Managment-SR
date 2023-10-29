@@ -5,6 +5,7 @@ import {createInternProfile} from '../../../../API/internProfile.api';
 
 const InternProfile = () => {
   const [error, setError] = useState(null); 
+  const [successMessage, setSuccessMessage] = useState(null);
 
   // Define the initial state for the form fields
   const [formData, setFormData] = useState({
@@ -63,6 +64,7 @@ const InternProfile = () => {
 
     const errorMessage = await createInternProfile(formData);
     if (!errorMessage) {
+      setSuccessMessage('Intern profile created successfully'); 
       console.log('Intern profile created successfully');
       setError(null);
     } else {
@@ -75,6 +77,7 @@ const InternProfile = () => {
     <div className="intern-profile-container">
       <h2 className="intern-profile-heading">Create Intern Profile</h2>
       {error && <div className="intern-profile-errorr">{error}</div>}
+      {successMessage && <div className="intern-profile-success">{successMessage}</div>}
       <form onSubmit={handleSubmit} className='intern-profile-form'>
         <div className='intern-profile-form'>
           <div>

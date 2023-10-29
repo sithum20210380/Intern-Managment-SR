@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Table, Button, Modal, Select, Tag } from 'antd';
+import { Table, Button, Modal, Select, Tag, Spin } from 'antd';
 
 import { getInternProfiles, updateInternProfile, deleteInternProfile } from '../../../../API/internProfile.api';
 
@@ -15,6 +15,7 @@ const ViewInterns = () => {
   const [updatedProfile, setUpdatedProfile] = useState({});
   const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false);
   const [internToDeleteId, setInternToDeleteId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(() => {
@@ -22,9 +23,11 @@ const ViewInterns = () => {
       try {
         const data = await getInternProfiles();
         setInternProfiles(data);
+        setIsLoading(false);
         console.log(data);
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
       }
     };
 
@@ -141,7 +144,7 @@ const ViewInterns = () => {
           default:
             color = 'black';
         }
-        
+
         return <Tag color={color}>{status}</Tag>;
       },
     },
@@ -166,13 +169,19 @@ const ViewInterns = () => {
   return (
     <div className='intern-data-table'>
       {/* <h2>Intern Profile Table</h2> */}
-      <Table
-        columns={columns}
-        dataSource={internProfiles.map((profile) => ({
-          ...profile,
-          key: profile.id,
-        }))}
-      />
+      {isLoading ? (
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          <Spin size="large" tip="Loading..." />
+        </div>
+      ) : (
+        <Table
+          columns={columns}
+          dataSource={internProfiles.map((profile) => ({
+            ...profile,
+            key: profile.id,
+          }))}
+        />
+      )}
       <Modal
         title="Intern Details"
         className='intern-details-modal'

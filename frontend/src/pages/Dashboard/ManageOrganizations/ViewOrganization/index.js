@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getOrganizations } from '../../../../API/organization.api';
+import { Table } from 'antd';
 
 const ViewOrganization = () => {
   // State to store the organizations data
@@ -19,14 +20,24 @@ const ViewOrganization = () => {
     fetchOrganizations();
   }, []);
 
+  // Define the columns for the table
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
+      title: 'Company Name',
+      dataIndex: 'companyName',
+      key: 'companyName',
+    },
+    // Add more columns as needed
+  ];
+
   return (
     <>
-      <h1>Organizations</h1>
-      <ul>
-        {organizations.map((organization) => (
-          <li key={organization.id}>{organization.companyName}</li>
-        ))}
-      </ul>
+      <Table dataSource={organizations} columns={columns} />
     </>
   );
 };

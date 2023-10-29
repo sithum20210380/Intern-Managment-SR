@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/LoginPage/Login';
-import AdminDashboard from './pages/Dashboard/AdminDashboard';
+import InternProfile from './pages/Dashboard/InternProfile';
 import Users from './pages/Dashboard/Users';
 import ManageOrganizations from './pages/Dashboard/ManageOrganizations';
 import { Layout } from 'antd';
@@ -22,8 +22,8 @@ function App() {
             <Sidebar />
             <Layout>
               <Content style={{ margin: '16px' }}>
-                <Route path="/adminDashboard" component={AdminDashboard} />
                 <Route path="/users" component={Users} />
+                <Route path="/internProfiles" component={InternProfile} />
                 <Route path="/organizations" component={ManageOrganizations} />
                 <Route path="/logout" />
               </Content>
