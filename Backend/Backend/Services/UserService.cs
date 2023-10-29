@@ -342,7 +342,7 @@ namespace Backend.Services
             {
                 // Fetch intern profiles from the database
                 var organizationProfile = await _dbContext.Organizations.ToListAsync();
-
+                Console.WriteLine("Oreganizations retuened successfully");
                 return organizationProfile;
             }
             catch (Exception ex)

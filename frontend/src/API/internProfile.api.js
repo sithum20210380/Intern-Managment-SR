@@ -76,6 +76,3 @@ export const deleteInternProfile = async (id) => {
         return 'An error occurred while deleting the intern profile';
     }
 };
-
-
-

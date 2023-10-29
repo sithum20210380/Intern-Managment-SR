@@ -4,9 +4,8 @@ import {createInternProfile} from '../../../../API/internProfile.api';
 
 
 const InternProfile = () => {
-  // State variable to handle errors
   const [error, setError] = useState(null); 
-  
+
   // Define the initial state for the form fields
   const [formData, setFormData] = useState({
     Name: '',
@@ -47,7 +46,7 @@ const InternProfile = () => {
       UploadCV: '',
       Status: '',
     });
-    setError(null); // Clear any previous errors
+    setError(null);
   };
   // Handle changes in the form fields
   const handleInputChange = (e) => {
@@ -83,6 +82,7 @@ const InternProfile = () => {
             <input
               type="text"
               name="Name"
+              placeholder='Required'
               value={formData.Name}
               onChange={handleInputChange}
               className="intern-profile-input"
@@ -93,6 +93,7 @@ const InternProfile = () => {
             <input
               type="text"
               name="University"
+              placeholder='Required'
               value={formData.University}
               onChange={handleInputChange}
               className="intern-profile-input"
@@ -103,6 +104,7 @@ const InternProfile = () => {
             <input
               type="email"
               name="Email"
+              placeholder='Required'
               value={formData.Email}
               onChange={handleInputChange}
               className="intern-profile-input"

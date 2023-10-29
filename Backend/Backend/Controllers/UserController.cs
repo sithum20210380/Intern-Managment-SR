@@ -79,9 +79,6 @@ namespace Backend.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception for debugging purposes
-                // logger.LogError(ex, "Error while fetching intern profiles");
-
                 // Return the inner exception message and stack trace for more details
                 var errorMessage = ex.InnerException?.Message ?? "An error occurred while fetching intern profiles.";
                 var stackTrace = ex.StackTrace;
@@ -167,9 +164,6 @@ namespace Backend.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception for debugging purposes
-                // logger.LogError(ex, "Error while fetching Organizations");
-
                 // Return the inner exception message and stack trace for more details
                 var errorMessage = ex.InnerException?.Message ?? "An error occurred while fetching Organizations.";
                 var stackTrace = ex.StackTrace;

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Modal } from 'antd';
 import {
   UserOutlined,
   DashboardOutlined,
   AppstoreAddOutlined,
-
+  LogoutOutlined
 } from '@ant-design/icons';
 
 import Logo from '../../assets/logo.png'
@@ -17,6 +17,7 @@ const { Sider } = Layout;
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     // Retrieve user data from local storage
@@ -31,9 +32,21 @@ const Sidebar = () => {
     setCollapsed(!collapsed);
   };
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    // Redirect to the login page
+    window.location.href = '/'; 
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  }
+
   return (
     <Sider>
-    {/* <Sider collapsible collapsed={collapsed} onCollapse={toggleCollapsed}> */}
       <div>
         {collapsed ? <DashboardOutlined /> : <img src={Logo} alt="logo" className="logo" />}
       </div>
@@ -53,12 +66,20 @@ const Sidebar = () => {
           <Link to="/users">Users</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<AppstoreAddOutlined />}>
-          <Link to="/organizations"></Link>Organizations
+          <Link to="/organizations">Organizations</Link>
         </Menu.Item>
-        <Menu.Item key="4" icon={<AppstoreAddOutlined />}>
+        <Menu.Item key="4" icon={<LogoutOutlined />} onClick={showModal}>
           Logout
         </Menu.Item>
       </Menu>
+      <Modal
+        title="Logout Confirmation"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Are you sure you want to logout?</p>
+      </Modal>
     </Sider>
   );
 };

@@ -9,6 +9,7 @@ import Sidebar from './pages/SideBar';
 
 import './App.css';
 
+
 const { Content } = Layout;
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/adminDashboard" component={AdminDashboard} />
                 <Route path="/users" component={Users} />
                 <Route path="/organizations" component={ManageOrganizations} />
+                <Route path="/logout" />
               </Content>
             </Layout>
           </Layout>

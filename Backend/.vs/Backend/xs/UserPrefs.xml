@@ -1,38 +1,38 @@
 ﻿<Properties StartupConfiguration="{CF7E94B1-1006-4E1D-98CF-18EBBA829E18}|Default">
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Backend PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Backend/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Backend/Constants/Authorization.cs">
     <Files>
-      <File FileName="Backend/Controllers/SecuredController.cs" Line="1" Column="1" />
+      <File FileName="Backend/Controllers/UserController.cs" />
+      <File FileName="Backend/Models/InternProfileModel.cs" Line="30" Column="52" />
+      <File FileName="Backend/Services/UserService.cs" />
+      <File FileName="Backend/Services/IUserService.cs" />
+      <File FileName="Backend/Settings/JWT.cs" />
+      <File FileName="Backend/Context/ApplicationDbContext.cs" />
+      <File FileName="Backend/Models/AddRoleModel.cs" />
+      <File FileName="Backend/Models/ApplicationUser.cs" />
       <File FileName="Backend/Constants/Authorization.cs" Line="16" Column="60" />
-      <File FileName="Backend/Controllers/UserController.cs" Line="1" Column="1" />
-      <File FileName="Backend/Models/InternProfileModel.cs" Line="1" Column="1" />
-      <File FileName="Backend/Settings/JWT.cs" Line="1" Column="1" />
-      <File FileName="Backend/Services/UserService.cs" Line="74" Column="1" />
-      <File FileName="Backend/Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="backend">
+          <Node name="backend" expanded="True">
             <Node name="Backend" expanded="True">
-              <Node name="Constants" expanded="True" />
+              <Node name="Constants" expanded="True">
+                <Node name="Authorization.cs" selected="True" />
+              </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
               <Node name="Services" expanded="True" />
-              <Node name="Settings" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
