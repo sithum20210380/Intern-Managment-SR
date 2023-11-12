@@ -59,7 +59,7 @@ const AdminDashboard = () => {
         <Content style={{ margin: '16px' }}>
           <div className='admin-options'>
             <h1>Intern Profile Manage</h1>
-            <Button type="primary" onClick={showCreateProfileDrawer}>
+            <Button type="secondary" className='create-new-intern-profile' onClick={showCreateProfileDrawer}>
               Create New Intern Profile
             </Button>
             <Button onClick={refreshTableData}>

@@ -31,6 +31,7 @@ namespace Backend.Services
             _configuration = configuration;
             _dbContext = dbContext;
         }
+
         public async Task<string> RegisterAsync(RegisterModel model)
         {
             var user = new ApplicationUser
@@ -50,6 +51,17 @@ namespace Backend.Services
 
                     // Save changes to the database using the injected _dbContext
                     await _dbContext.SaveChangesAsync();
+                    // Send welcome email to the registered user
+                    string emailSubject = "Welcome to Xternship";
+                    string username = $"{user.FirstName} {user.LastName}";
+                    string emailMessage = $"Dear {username},\n\n" +
+                                          "Welcome to Xternship! You are invited to join our xternship platform for further procedure.\n" +
+                                          "Thank you for joining us!\n\n" +
+                                          "Best Regards,\n" +
+                                          "Xternship Team";
+
+                    EmailSender emailSender = new EmailSender();
+                    await emailSender.SendEmail(emailSubject, user.Email, username, emailMessage);
                     return $"User Registered with username {user.UserName}";
                 }
                 return $"User Registered with username {user.UserName}";
@@ -350,5 +362,67 @@ namespace Backend.Services
                 throw;
             }
         }
+
+        public async Task<int> DeleteOrganizationAsync(int id)
+        {
+            try
+            {
+                // Find the existing organization by ID
+                var existingProfile = await _dbContext.Organizations.FindAsync(id);
+
+                if (existingProfile == null)
+                {
+                    return -1; // Profile not found
+                }
+
+                _dbContext.Organizations.Remove(existingProfile);
+                await _dbContext.SaveChangesAsync();
+
+                return id;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions and return an error code if needed
+                return -1;
+            }
+        }
+
+        public async Task<int> InviteUserAsync(InviteUserModel model)
+        {
+            try
+            {
+                var inviteUser = new InviteUserModel
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Username = model.Username,
+                    Email = model.Email,
+                    Message = model.Message,
+                    Subject = model.Subject
+                };
+
+                _dbContext.InviteUsers.Add(inviteUser);
+                await _dbContext.SaveChangesAsync();
+
+                string emailSubject = "Welcome to Xternship";
+                string username = model.FirstName + " " + model.LastName;
+                string emailMessage = "Dear " + username + "\n" +
+                    "You are invited to join for our xternship platform" +
+                    "Best Regards" +
+                    "Your Message:\n" + model.Message;
+
+                EmailSender emailSender = new EmailSender();
+                await emailSender.SendEmail(emailSubject, model.Email, username, emailMessage);
+
+                return inviteUser.Id;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately (e.g., log the error)
+                Console.WriteLine($"Error inviting user: {ex.Message}");
+                return -1;
+            }
+        }
+
     }
 }

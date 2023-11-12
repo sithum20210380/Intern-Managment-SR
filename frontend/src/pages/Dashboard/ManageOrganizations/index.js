@@ -4,6 +4,8 @@ import { Layout, Button, Spin, Drawer } from 'antd';
 import ViewOrganization from './ViewOrganization';
 import AddOrganization from './AddOrganization';
 
+import './styles.sass';
+
 const { Content } = Layout;
 
 const ManageOrganizations = () => {
@@ -13,29 +15,6 @@ const ManageOrganizations = () => {
   const [isDrawerVisible, setDrawerVisible] = useState(false); // Add state for the Drawer
   const [refreshTable, setRefreshTable] = useState(false); // Add state for refreshing the table
 
-
-  // Function to toggle the visibility of Organizations
-  const showOrganizationsOption = () => {
-    setIsLoading(true); // Show loader
-    setTimeout(() => {
-      setshowOrganizations(!showOrganizations);
-      setIsLoading(false); // Hide loader
-      setAddOrganization(false);
-    }, 1000);
-  };
-
-  // Function to toggle the visibility of AddOrganization
-  const AddOrganizationOption = () => {
-    setAddOrganization(!AddOrganizations);
-    setAddOrganization(true);
-    setshowOrganizations(false);
-  };
-
-  // Function to go back to the main Admin Dashboard
-  const goBack = () => {
-    setshowOrganizations(false);
-    setAddOrganization(false);
-  };
 
   // Function to open the Drawer for creating a new organization
   const showCreateOrganizationDrawer = () => {
@@ -58,7 +37,7 @@ const ManageOrganizations = () => {
         <Content style={{ margin: '16px' }}>
           <div className='admin-options'>
             <h1>Organization Manage</h1>
-            <Button type="primary" onClick={showCreateOrganizationDrawer}>
+            <Button type="secondary" className='create-new-organization' onClick={showCreateOrganizationDrawer}>
               Create New Organization
             </Button>
             <Button onClick={refreshTableData}>

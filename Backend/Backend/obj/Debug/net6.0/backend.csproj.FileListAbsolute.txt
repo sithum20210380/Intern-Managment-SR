@@ -510,3 +510,8 @@ C:/Users/SithumR/OneDrive - 99x/Documents/GitHub/Intern Managment SR/backend/Bac
 /Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/obj/Debug/net6.0/Backend.pdb
 /Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/obj/Debug/net6.0/Backend.genruntimeconfig.cache
 /Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/obj/Debug/net6.0/ref/Backend.dll
+/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/bin/Debug/net6.0/SendGrid.dll
+/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/bin/Debug/net6.0/SendGrid.CSharp.HTTP.Client.dll
+/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/bin/Debug/net6.0/SendGrid.Extensions.DependencyInjection.dll
+/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/bin/Debug/net6.0/SendGrid.SmtpApi.dll
+/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/bin/Debug/net6.0/StarkbankEcdsa.dll

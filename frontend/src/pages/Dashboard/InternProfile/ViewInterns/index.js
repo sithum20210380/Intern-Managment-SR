@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Table, Button, Modal, Select, Tag, Spin } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
-import { getInternProfiles, updateInternProfile, deleteInternProfile } from '../../../../API/internProfile.api';
+import { 
+  getInternProfiles, 
+  updateInternProfile, 
+  deleteInternProfile 
+} from '../../../../API/internProfile.api';
 
 import './styles.sass';
 
@@ -153,14 +158,13 @@ const ViewInterns = () => {
       dataIndex: 'actions',
       key: 'actions',
       render: (_, intern) => (
-        <div>
-          <Button type="primary" onClick={() => handleViewDetails(intern)}>
+        <div className='action-container'>
+          <Button type="secondary" className='intern-view-btn' onClick={() => handleViewDetails(intern)}>
             View profile
           </Button>
-          <Button type="danger" onClick={() => showConfirmDeleteModal(intern.id)}>
-            Delete
+          <Button type='secondary' className='intern-delete-btn' onClick={() => showConfirmDeleteModal(intern.id)}>
+          <DeleteOutlined />
           </Button>
-
         </div>
       ),
     },

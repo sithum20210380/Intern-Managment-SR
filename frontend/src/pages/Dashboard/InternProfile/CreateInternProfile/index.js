@@ -75,7 +75,7 @@ const InternProfile = () => {
 
   return (
     <div className="intern-profile-container">
-      <h2 className="intern-profile-heading">Create Intern Profile</h2>
+      {/* <h2 className="intern-profile-heading">Create Intern Profile</h2> */}
       {error && <div className="intern-profile-errorr">{error}</div>}
       {successMessage && <div className="intern-profile-success">{successMessage}</div>}
       <form onSubmit={handleSubmit} className='intern-profile-form'>

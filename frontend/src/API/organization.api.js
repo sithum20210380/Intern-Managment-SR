@@ -35,3 +35,20 @@ export const getOrganizations = async () => {
       throw new Error('Error fetching organizations: ' + error);
     }
   };
+
+// Delete an organization
+export const deleteOrganization = async (id) => {
+  try {
+    const response = await fetch(`${apiUrl}/User/deleteOrganization/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      console.log('Organization deleted successfully');
+    } else {
+      console.error('Failed to delete organization');
+    }
+  } catch (error) {
+    console.error('Error deleting organization:', error);
+  }
+};

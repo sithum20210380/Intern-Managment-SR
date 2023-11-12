@@ -1,30 +1,22 @@
 ﻿<Properties StartupConfiguration="{CF7E94B1-1006-4E1D-98CF-18EBBA829E18}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Backend PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Backend/Constants/Authorization.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Backend/Controllers/UserController.cs">
     <Files>
-      <File FileName="Backend/Controllers/UserController.cs" />
-      <File FileName="Backend/Models/InternProfileModel.cs" Line="30" Column="52" />
-      <File FileName="Backend/Services/UserService.cs" />
-      <File FileName="Backend/Services/IUserService.cs" />
-      <File FileName="Backend/Settings/JWT.cs" />
-      <File FileName="Backend/Context/ApplicationDbContext.cs" />
-      <File FileName="Backend/Models/AddRoleModel.cs" />
-      <File FileName="Backend/Models/ApplicationUser.cs" />
-      <File FileName="Backend/Constants/Authorization.cs" Line="16" Column="60" />
+      <File FileName="Backend/Controllers/UserController.cs" Line="186" Column="1" />
+      <File FileName="Backend/Models/RegisterModel.cs" Line="1" Column="1" />
+      <File FileName="Backend/Services/IUserService.cs" Line="20" Column="42" />
+      <File FileName="Backend/Services/UserService.cs" Line="354" Column="55" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="backend" expanded="True">
-            <Node name="Backend" expanded="True">
-              <Node name="Constants" expanded="True">
-                <Node name="Authorization.cs" selected="True" />
+          <Node name="backend">
+            <Node name="Backend">
+              <Node name="Constants" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="UserController.cs" selected="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>
@@ -34,5 +26,8 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

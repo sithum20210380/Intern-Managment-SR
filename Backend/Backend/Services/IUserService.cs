@@ -17,5 +17,8 @@ namespace Backend.Services
         
         Task<int> CreateOrganizationAsync(OrganizationsModel model);
         Task<IEnumerable<OrganizationsModel>> GetOrganizationAsync();
+        Task<int> DeleteOrganizationAsync(int id);
+
+        Task<int> InviteUserAsync(InviteUserModel model);
     }
 }

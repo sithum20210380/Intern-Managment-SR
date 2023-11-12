@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8zitKq0KAId6D4ML2Gxa1ADg/6H/WtFV9Df5IljkzDHmuNo+/+1ufFLhMeQR+VXxqzsEaBzsLhjgkZbt+kapWg==",
+  "dgSpecHash": "BNFSsHarwWOP+yNa8FkBH3V/it1NH7ndPrZy7r77R9uhyVoRAwyScgo8PJlh/j8cBPwVkfGYjqS0GgS1TQlX0g==",
   "success": true,
   "projectFilePath": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/Backend.csproj",
   "expectedPackageFiles": [
@@ -93,6 +93,7 @@
     "/Users/sithumr/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/microsoft.extensions.dependencyinjection/6.0.1/microsoft.extensions.dependencyinjection.6.0.1.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "/Users/sithumr/.nuget/packages/microsoft.extensions.http/2.1.0/microsoft.extensions.http.2.1.0.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/microsoft.extensions.identity.core/6.0.22/microsoft.extensions.identity.core.6.0.22.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/microsoft.extensions.identity.stores/6.0.22/microsoft.extensions.identity.stores.6.0.22.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/microsoft.extensions.logging/6.0.0/microsoft.extensions.logging.6.0.0.nupkg.sha512",
@@ -148,6 +149,11 @@
     "/Users/sithumr/.nuget/packages/runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "/Users/sithumr/.nuget/packages/sendgrid/9.28.1/sendgrid.9.28.1.nupkg.sha512",
+    "/Users/sithumr/.nuget/packages/sendgrid.csharp.http.client/3.4.12/sendgrid.csharp.http.client.3.4.12.nupkg.sha512",
+    "/Users/sithumr/.nuget/packages/sendgrid.extensions.dependencyinjection/1.0.1/sendgrid.extensions.dependencyinjection.1.0.1.nupkg.sha512",
+    "/Users/sithumr/.nuget/packages/sendgrid.smtpapi/1.4.6/sendgrid.smtpapi.1.4.6.nupkg.sha512",
+    "/Users/sithumr/.nuget/packages/starkbank-ecdsa/1.3.3/starkbank-ecdsa.1.3.3.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
@@ -233,5 +239,16 @@
     "/Users/sithumr/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SendGrid.CSharp.HTTP.Client 3.4.12' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "SendGrid.CSharp.HTTP.Client",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

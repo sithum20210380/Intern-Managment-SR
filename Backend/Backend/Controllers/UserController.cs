@@ -109,8 +109,6 @@ namespace Backend.Controllers
             return NotFound("Intern profile not found.");
         }
 
-
-
         [HttpPost("createevaluationform")]
         public async Task<IActionResult> CreateEvaluationFormAsync(EvaluationFormModel model)
         {
@@ -170,6 +168,41 @@ namespace Backend.Controllers
 
                 return StatusCode(StatusCodes.Status500InternalServerError, new { Message = errorMessage, StackTrace = stackTrace });
             }
+        }
+
+        [HttpDelete("deleteOrganization/{id}")]
+        public async Task<IActionResult> DeleteOrganizationAsync(int id)
+        {
+            var result = await _userService.DeleteOrganizationAsync(id);
+            if (result > 0)
+            {
+                return Ok($"Organizaton with ID {result} deleted successfully.");
+            }
+            return NotFound("Organizaton not found.");
+        }
+
+        [HttpPost("inviteUser")]
+        public async Task<IActionResult> InviteUserAsync(InviteUserModel model)
+        {
+            try
+            {
+                var result = await _userService.InviteUserAsync(model);
+                if (result > 0)
+                {
+                    return Ok($"Email sent sucessfully: {result}");
+                }
+
+                return BadRequest("Failed to send email.");
+            }
+            catch (Exception ex)
+            {
+                // Return the inner exception message and stack trace for more details
+                var errorMessage = ex.InnerException?.Message ?? "An error occurred while saving changes.";
+                var stackTrace = ex.StackTrace;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = errorMessage, StackTrace = stackTrace });
+            }
+
         }
 
     }
