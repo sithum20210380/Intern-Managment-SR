@@ -7,6 +7,7 @@ namespace Backend.Services
         Task<string> RegisterAsync(RegisterModel model);
         Task<AuthenticationModel> GetTokenAsync(TokenRequestModel model);
         Task<string> AddRoleAsync(AddRoleModel model);
+        Task<IEnumerable<ApplicationUser>> GetInviteUserAsync();
 
         Task<int> CreateInternProfileAsync(InternProfileModel model);
         Task<int> UpdateInternProfileAsync(int id, InternProfileModel model);
@@ -20,5 +21,6 @@ namespace Backend.Services
         Task<int> DeleteOrganizationAsync(int id);
 
         Task<int> InviteUserAsync(InviteUserModel model);
+        
     }
 }

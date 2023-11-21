@@ -11592,9 +11592,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/Backend.csproj",
-      "projectName": "Backend",
-      "projectPath": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/Backend.csproj",
+      "projectUniqueName": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/backend.csproj",
+      "projectName": "backend",
+      "projectPath": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/backend.csproj",
       "packagesPath": "/Users/sithumr/.nuget/packages/",
       "outputPath": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/obj/",
       "projectStyle": "PackageReference",

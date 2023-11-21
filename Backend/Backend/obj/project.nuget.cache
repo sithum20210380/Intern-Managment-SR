@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BNFSsHarwWOP+yNa8FkBH3V/it1NH7ndPrZy7r77R9uhyVoRAwyScgo8PJlh/j8cBPwVkfGYjqS0GgS1TQlX0g==",
+  "dgSpecHash": "2qbnLxIHJp9yMKFmtPypKPhGC+yVUUV+MxxFaesgeJDUeZ0sVw4RaapGwH2gnPoR6nPXBbbT7/twBbd6cGa//A==",
   "success": true,
-  "projectFilePath": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/Backend.csproj",
+  "projectFilePath": "/Users/sithumr/Documents/GitHub/Intern-Managment-SR/Backend/Backend/backend.csproj",
   "expectedPackageFiles": [
     "/Users/sithumr/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",
     "/Users/sithumr/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

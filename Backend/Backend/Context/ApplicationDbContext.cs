@@ -14,5 +14,6 @@ namespace Backend.Context
         public DbSet<EvaluationFormModel>? EvaluationForms { get; set; }
         public DbSet<OrganizationsModel>? Organizations { get; set; }
         public DbSet<InviteUserModel>? InviteUsers { get; set; }
+        public DbSet<RegisterModel>? RegisterModels { get; set; }
     }
 }

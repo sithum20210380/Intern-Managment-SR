@@ -41,6 +41,7 @@ namespace Backend.Services
                 FirstName = model.FirstName,
                 LastName = model.LastName,
             };
+
             var userWithSameEmail = await _userManager.FindByEmailAsync(model.Email);
             if (userWithSameEmail == null)
             {
@@ -50,12 +51,16 @@ namespace Backend.Services
                     await _userManager.AddToRoleAsync(user, Authorization.default_role.ToString());
 
                     // Save changes to the database using the injected _dbContext
+                    //_dbContext.Users.Add(user); // Assuming RegisterModels is the DbSet in your DbContext
                     await _dbContext.SaveChangesAsync();
+
                     // Send welcome email to the registered user
                     string emailSubject = "Welcome to Xternship";
                     string username = $"{user.FirstName} {user.LastName}";
                     string emailMessage = $"Dear {username},\n\n" +
                                           "Welcome to Xternship! You are invited to join our xternship platform for further procedure.\n" +
+                                          $"Username : {model.Username} \n" +
+                                          $"Password : {model.Password} \n" +
                                           "Thank you for joining us!\n\n" +
                                           "Best Regards,\n" +
                                           "Xternship Team";
@@ -71,6 +76,8 @@ namespace Backend.Services
                 return $"Email {user.Email} is already registered.";
             }
         }
+
+
 
         public async Task<AuthenticationModel> GetTokenAsync(TokenRequestModel model)
         {
@@ -421,6 +428,21 @@ namespace Backend.Services
                 // Handle exceptions appropriately (e.g., log the error)
                 Console.WriteLine($"Error inviting user: {ex.Message}");
                 return -1;
+            }
+        }
+
+        public async Task<IEnumerable<ApplicationUser>> GetInviteUserAsync()
+        {
+            try
+            {
+                // Fetch intern profiles from the database
+                var inviteUsers = await _dbContext.Users.ToListAsync();
+                Console.WriteLine("User Retrieved successfully");
+                return inviteUsers;
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 

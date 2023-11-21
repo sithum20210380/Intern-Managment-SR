@@ -205,5 +205,31 @@ namespace Backend.Controllers
 
         }
 
+        [HttpGet("GetUsers")]
+        public async Task<IActionResult> GetInviteUserAsync()
+        {
+            try
+            {
+                // Fetch users from the database using your _userService or _dbContext
+                var Users = await _userService.GetInviteUserAsync();
+
+                // Check if any profiles were found
+                if (Users != null && Users.Any())
+                {
+                    return Ok(Users);
+                }
+
+                return NotFound("No Users found.");
+            }
+            catch (Exception ex)
+            {
+                // Return the inner exception message and stack trace for more details
+                var errorMessage = ex.InnerException?.Message ?? "An error occurred while fetching Users.";
+                var stackTrace = ex.StackTrace;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = errorMessage, StackTrace = stackTrace });
+            }
+        }
+
     }
 }
