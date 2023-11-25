@@ -16,6 +16,8 @@
         public const string default_password = "Password_9.";
         public const string default_firstname = "sithum";
         public const string default_lastname = "raveesha";
+        public const string default_Company = "99x";
+        public const string default_UserRole = "Admin";
         public const Roles default_role = Roles.Administrator;
     }
 }

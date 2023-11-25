@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using Backend.Context;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Backend.Services
 {
@@ -38,8 +39,10 @@ namespace Backend.Services
             {
                 UserName = model.Username,
                 Email = model.Email,
+                Company = model.Company,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
+                Role = model.Role,
             };
 
             var userWithSameEmail = await _userManager.FindByEmailAsync(model.Email);
@@ -187,7 +190,7 @@ namespace Backend.Services
 
                 var internProfile = new InternProfileModel
                 {
-                    Name = model.Name,
+                    FirstName = model.FirstName,
                     University = model.University,
                     Email = model.Email,
                     InterviewScore = model.InterviewScore,
@@ -202,7 +205,8 @@ namespace Backend.Services
                     AssignedTeam = model.AssignedTeam,
                     Mentor = model.Mentor,
                     UploadCV = model.UploadCV,
-                    Status = model.Status
+                    Status = model.Status,
+                    Role = "Intern",
                 };
 
                 _dbContext.InternProfiles.Add(internProfile);
@@ -244,7 +248,7 @@ namespace Backend.Services
                 }
 
                 // Update the profile properties
-                existingProfile.Name = model.Name;
+                existingProfile.FirstName = model.FirstName;
                 existingProfile.University = model.University;
                 existingProfile.Email = model.Email;
                 existingProfile.InterviewScore = model.InterviewScore;
@@ -260,7 +264,8 @@ namespace Backend.Services
                 existingProfile.Mentor = model.Mentor;
                 existingProfile.UploadCV = model.UploadCV;
                 existingProfile.Status = model.Status;
-                
+                existingProfile.Role = model.Role;
+
 
                 _dbContext.InternProfiles.Update(existingProfile);
                 await _dbContext.SaveChangesAsync();
@@ -442,6 +447,7 @@ namespace Backend.Services
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error fetching users: {ex.Message}");
                 throw;
             }
         }

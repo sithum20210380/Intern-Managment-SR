@@ -11,7 +11,7 @@ namespace Backend.Models
         public int Id { get; set; }
 
         [Required]
-        public string? Name { get; set; }
+        public string? FirstName { get; set; }
 
         [Required] 
         public string? Email { get; set; }
@@ -32,5 +32,6 @@ namespace Backend.Models
         public string? Mentor { get; set; }
         public string? UploadCV { get; set; }
         public string? Status { get; set; }
+        public string? Role { get; set; }
     }
 }

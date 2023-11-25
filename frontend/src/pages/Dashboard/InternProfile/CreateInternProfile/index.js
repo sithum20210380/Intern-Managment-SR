@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import './styles.sass'
+import { notification } from 'antd';
+
 import {createInternProfile} from '../../../../API/internProfile.api';
 
+import './styles.sass'
 
 const InternProfile = () => {
   const [error, setError] = useState(null); 
@@ -58,6 +60,13 @@ const InternProfile = () => {
     });
   };
 
+  const openNotification = (placement) => {
+    notification.info({
+      message: 'Intern profile created successfully',
+      placement,
+    });
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +74,7 @@ const InternProfile = () => {
     const errorMessage = await createInternProfile(formData);
     if (!errorMessage) {
       setSuccessMessage('Intern profile created successfully'); 
+      openNotification('topRight');
       console.log('Intern profile created successfully');
       setError(null);
     } else {

@@ -23,7 +23,9 @@ namespace Backend.Context
                 Email = Authorization.default_email, 
                 EmailConfirmed = true, 
                 FirstName=Authorization.default_firstname, 
-                LastName=Authorization.default_lastname, 
+                LastName=Authorization.default_lastname,
+                Company=Authorization.default_Company,
+                Role = Authorization.default_UserRole,
                 PhoneNumberConfirmed = true 
             };
 

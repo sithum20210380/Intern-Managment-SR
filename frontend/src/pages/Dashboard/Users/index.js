@@ -1,27 +1,26 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Table, Button, Modal, Select, Tag, Spin, Layout } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import React, { useState, useEffect} from 'react';
+import { Table, Button, Spin} from 'antd';
 
 import { 
   getInternProfiles, 
-  updateInternProfile, 
-  deleteInternProfile 
 } from '../../../API/internProfile.api';
-
-const { Content } = Layout;
-const { Option } = Select;
+import { getUsers } from '../../../API/allUsers.api';
 
 const Users = () => {
-  const [internProfiles, setInternProfiles] = useState([]);
+  const [combinedData, setCombinedData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getInternProfiles();
-        setInternProfiles(data);
+        const internData = await getInternProfiles();
+        const userData = await getUsers();
+
+        // Assuming both internData and userData have unique identifiers
+        const combined = [...internData, ...userData];
+        setCombinedData(combined);
         setIsLoading(false);
-        console.log(data);
+        console.log(combined);
       } catch (error) {
         console.error(error);
         setIsLoading(false);
@@ -30,6 +29,7 @@ const Users = () => {
 
     fetchData();
   }, []);
+
   const columns = [
     {
       title:'Id',
@@ -38,7 +38,7 @@ const Users = () => {
     },
     {
       title: 'Name',
-      dataIndex: 'name',
+      dataIndex: 'firstName',
       key: 'Name',
     },
     {
@@ -79,9 +79,9 @@ const Users = () => {
       ) : (
         <Table
           columns={columns}
-          dataSource={internProfiles.map((profile) => ({
-            ...profile,
-            key: profile.id,
+          dataSource={combinedData.map((data) => ({
+            ...data,
+            key: data.id, // Assuming 'id' is a unique identifier
           }))}
         />
       )}

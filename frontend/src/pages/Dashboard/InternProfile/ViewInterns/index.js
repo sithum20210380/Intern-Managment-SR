@@ -16,7 +16,6 @@ const ViewInterns = () => {
   const [internProfiles, setInternProfiles] = useState([]);
   const [selectedIntern, setSelectedIntern] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [status, setStatus] = useState(null);
   const [updatedProfile, setUpdatedProfile] = useState({});
   const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false);
   const [internToDeleteId, setInternToDeleteId] = useState(null);
@@ -51,7 +50,6 @@ const ViewInterns = () => {
   };
 
   const handleStatusChange = (field, value) => {
-    setStatus(value.toString());
     setUpdatedProfile({ ...updatedProfile, [field]: value });
   };
 
@@ -105,7 +103,7 @@ const ViewInterns = () => {
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'name',
+      dataIndex: 'firstName',
       key: 'Name',
     },
     {
