@@ -15,28 +15,6 @@ const AdminDashboard = () => {
   const [isDrawerVisible, setDrawerVisible] = useState(false);
   const [refreshTable, setRefreshTable] = useState(false); // Add state for refreshing the table
 
-  // Function to toggle the visibility of InternProfile
-  const showInternProfileOption = () => {
-    setShowInternProfile(!showInternProfile);
-    setShowInternProfile(true);
-    setShowViewInterns(false);
-  };
-
-  // Function to toggle the visibility of ViewInterns
-  const showViewInternsOption = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setShowViewInterns(!showViewInterns);
-      setIsLoading(false);
-      setShowInternProfile(false);
-    }, 1000);
-  };
-
-  // Function to go back to the main Admin Dashboard
-  const goBack = () => {
-    setShowInternProfile(false);
-    setShowViewInterns(false);
-  };
 
   // Function to open the Drawer for creating a new intern profile
   const showCreateProfileDrawer = () => {
