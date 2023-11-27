@@ -14,3 +14,25 @@ export const getUsers = async () => {
         throw new Error('Error Users: ' + error);
     }
 };
+
+// Create a new User profile
+export const createUser = async (formData) => {
+    try {
+        const response = await fetch(`${apiUrl}/User/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        
+        if (response.ok) {
+            console.log('Invite sent successfully');
+        } else {
+            const errorData = await response.json();
+            return errorData.message || 'Failed to create User';
+        }
+    } catch (error) {
+        throw new Error('Error creating User: ' + error);
+    }
+};

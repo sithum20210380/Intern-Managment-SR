@@ -1,14 +1,16 @@
 import React, { useState, useEffect} from 'react';
-import { Table, Button, Spin} from 'antd';
+import { Table, Button, Spin, Drawer} from 'antd';
 
 import { 
   getInternProfiles, 
 } from '../../../API/internProfile.api';
 import { getUsers } from '../../../API/allUsers.api';
+import InviteUser from './InviteUser';
 
 const Users = () => {
   const [combinedData, setCombinedData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [drawerVisible, setDrawerVisible] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,12 +67,28 @@ const Users = () => {
     },
   ];
 
+  const showDrawer = () => {
+    setDrawerVisible(true);
+  };
+
+  const onCloseDrawer = () => {
+    setDrawerVisible(false);
+  };
+
   return (
     <div>
       <div>
-        <Button>
+        <Button onClick={showDrawer}>
           Invite User
         </Button>
+        <Drawer
+        title="Invite User"
+        width={720}
+        onClose={onCloseDrawer}
+        visible={drawerVisible}
+      >
+        <InviteUser onCloseDrawer={onCloseDrawer} />
+      </Drawer>
       </div>
       {isLoading ? (
         <div style={{ textAlign: 'center', padding: '20px' }}>
