@@ -34,7 +34,6 @@ const ViewInterns = () => {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
