@@ -81,7 +81,6 @@ const InviteUser = () => {
 
     return (
         <div className="User-profile-container">
-            {/* <h2 className="intern-profile-heading">Create Intern Profile</h2> */}
             <form onSubmit={handleSubmit} className='User-profile-form'>
                 <div className='User-profile-form'>
                     <div>
