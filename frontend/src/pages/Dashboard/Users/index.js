@@ -35,11 +35,6 @@ const Users = () => {
 
   const columns = [
     {
-      title:'Id',
-      dataIndex:'id',
-      key:'id',
-    },
-    {
       title: 'Name',
       dataIndex: 'firstName',
       key: 'Name',
