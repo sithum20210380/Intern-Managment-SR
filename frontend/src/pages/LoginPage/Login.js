@@ -6,6 +6,7 @@ import './styles.sass'
 function Login() {
   const [loginData, setLoginData] = useState({
     UserName: '',
+    roles: '',
     Email: '',
     Password: '',
   });

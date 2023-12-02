@@ -61,7 +61,7 @@ namespace Backend.Services
                     string emailSubject = "Welcome to Xternship";
                     string username = $"{user.FirstName} {user.LastName}";
                     string emailMessage = $"Dear {username},\n\n" +
-                                          "Welcome to Xternship! You are invited to join our xternship platform for further procedure.\n" +
+                                          $"Welcome to {model.Company} You are invited to join our xternship platform for further procedure.\n" +
                                           $"Username : {model.Username} \n" +
                                           $"Password : {model.Password} \n" +
                                           "Thank you for joining us!\n\n" +
@@ -104,8 +104,7 @@ namespace Backend.Services
                     authenticationModel.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
                     authenticationModel.Email = user.Email;
                     authenticationModel.UserName = user.UserName;
-                    var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
-                    authenticationModel.Roles = rolesList.ToList();
+                    authenticationModel.Roles = user.Role;
                 }
                 else
                 {
@@ -129,7 +128,7 @@ namespace Backend.Services
             var roleClaims = new List<Claim>();
             for (int i = 0; i < roles.Count; i++)
             {
-                roleClaims.Add(new Claim("roles", roles[i]));
+                roleClaims.Add(new Claim(ClaimTypes.Role, roles[i]));
             }
             var claims = new[]
             {

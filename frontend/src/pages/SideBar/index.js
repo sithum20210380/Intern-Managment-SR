@@ -51,7 +51,7 @@ const Sidebar = () => {
         {collapsed ? <DashboardOutlined /> : <img src={Logo} alt="logo" className="logo" />}
       </div>
       <div className="user-role-dashboard-title">
-        {collapsed ? <DashboardOutlined /> : <span>Admin Dashboard</span>}
+        {collapsed ? <DashboardOutlined /> : <span>{userData && userData.roles} Dashboard</span>}
       </div>
       <div className="user-welcome">
         {userData && (
@@ -59,16 +59,21 @@ const Sidebar = () => {
         )}
       </div>
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-        <Menu.Item key="1" icon={<UserOutlined />}>
+        {(userData && (userData.roles.includes('Admin') || userData.roles.includes('Mentor'))) && (
+          <Menu.Item key="1" icon={<UserOutlined />}>
           <Link to="/users">Users</Link>
         </Menu.Item>
+        )}
         <Menu.Item key="2" icon={<DashboardOutlined />}>
           <Link to="/internProfiles">Intern Profile</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<AppstoreAddOutlined />}>
           <Link to="/organizations">Organizations</Link>
         </Menu.Item>
-        <Menu.Item key="4" icon={<LogoutOutlined />} onClick={showModal}>
+        <Menu.Item key="4" icon={<AppstoreAddOutlined />}>
+          <Link to="/evaluation">Evaluation</Link>
+        </Menu.Item>
+        <Menu.Item key="5" icon={<LogoutOutlined />} onClick={showModal}>
           Logout
         </Menu.Item>
       </Menu>

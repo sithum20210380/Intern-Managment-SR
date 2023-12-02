@@ -78,7 +78,11 @@ const ViewOrganization = () => {
 
   return (
     <>
-      <Table dataSource={organizations} columns={columns} />
+      <Table 
+        dataSource={organizations} 
+        columns={columns} 
+        rowKey={(organization) => organization.id}
+        />
       <Modal
         title="Confirm Delete"
         visible={confirmDeleteVisible}
