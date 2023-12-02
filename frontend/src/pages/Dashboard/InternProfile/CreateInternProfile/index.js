@@ -11,7 +11,7 @@ const InternProfile = () => {
 
   // Define the initial state for the form fields
   const [formData, setFormData] = useState({
-    Name: '',
+    firstName: '',
     University: '',
     Email: '',
     InterviewScore: 0,
@@ -32,7 +32,7 @@ const InternProfile = () => {
   // Function to clear all input fields
   const clearForm = () => {
     setFormData({
-      Name: '',
+      firstName: '',
       University: '',
       Email: '',
       InterviewScore: 0,
@@ -94,9 +94,9 @@ const InternProfile = () => {
             <label className="intern-profile-label">Name:</label>
             <input
               type="text"
-              name="Name"
+              name="firstName"
               placeholder='Required'
-              value={formData.Name}
+              value={formData.firstName}
               onChange={handleInputChange}
               className="intern-profile-input"
             />

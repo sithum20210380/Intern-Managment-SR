@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import { Table, Button, Spin, Drawer} from 'antd';
 
 import { 
@@ -59,9 +60,9 @@ const Users = () => {
       key: 'actions',
       render: (_, intern) => (
         <div className='action-container'>
-          {/* <Button type='secondary' className='intern-delete-btn' onClick={() => showConfirmDeleteModal(intern.id)}>
-            <DeleteOutlined />
-          </Button> */}
+          <Link to={`/user-details/${intern.id}`}>
+            <Button type='primary'>View Details</Button>
+          </Link>
         </div>
       ),
     },
