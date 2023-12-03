@@ -59,7 +59,7 @@ const Sidebar = () => {
         )}
       </div>
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-        {(userData && (userData.roles.includes('Admin') || userData.roles.includes('Mentor'))) && (
+        {(userData && (userData.roles.includes('admin') || userData.roles.includes('Mentor')|| userData.roles.includes('evaluator'))) && (
           <Menu.Item key="1" icon={<UserOutlined />}>
           <Link to="/users">Users</Link>
         </Menu.Item>
