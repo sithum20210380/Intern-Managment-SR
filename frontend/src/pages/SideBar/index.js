@@ -28,10 +28,6 @@ const Sidebar = () => {
     }
   }, []);
 
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -59,20 +55,25 @@ const Sidebar = () => {
         )}
       </div>
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-        {(userData && (userData.roles.includes('admin') || userData.roles.includes('Mentor')|| userData.roles.includes('evaluator'))) && (
+        {(userData && (userData.roles.includes('admin') || userData.roles.includes('Mentor')|| userData.roles.includes('management')|| userData.roles.includes('Intern')||userData.roles.includes('evaluator'))) && (
           <Menu.Item key="1" icon={<UserOutlined />}>
           <Link to="/users">Users</Link>
         </Menu.Item>
         )}
-        <Menu.Item key="2" icon={<DashboardOutlined />}>
+        {(userData && (userData.roles.includes('admin') || userData.roles.includes('Mentor')|| userData.roles.includes('management')|| userData.roles.includes('Intern')||userData.roles.includes('evaluator'))) && (        <Menu.Item key="2" icon={<DashboardOutlined />}>
           <Link to="/internProfiles">Intern Profile</Link>
         </Menu.Item>
+        )}
+        {(userData && (userData.roles.includes('admin') || userData.roles.includes('Mentor')|| userData.roles.includes('management')|| userData.roles.includes('evaluator'))) && (
         <Menu.Item key="3" icon={<AppstoreAddOutlined />}>
           <Link to="/organizations">Organizations</Link>
         </Menu.Item>
+        )}
+        {(userData && (userData.roles.includes('admin') || userData.roles.includes('Mentor')|| userData.roles.includes('evaluator'))) && (
         <Menu.Item key="4" icon={<AppstoreAddOutlined />}>
           <Link to="/evaluation">Evaluation</Link>
         </Menu.Item>
+        )}
         <Menu.Item key="5" icon={<LogoutOutlined />} onClick={showModal}>
           Logout
         </Menu.Item>
