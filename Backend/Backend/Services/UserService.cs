@@ -53,32 +53,9 @@ namespace Backend.Services
                 {
                     await _userManager.AddToRoleAsync(user, Authorization.default_role.ToString());
 
+                    // Save changes to the database using the injected _dbContext
+                    //_dbContext.Users.Add(user); // Assuming RegisterModels is the DbSet in your DbContext
                     await _dbContext.SaveChangesAsync();
-
-                    if (model.Role == "intern")
-                    {
-                        // Create intern profile
-                        await CreateInternProfileAsync(new InternProfileModel
-                        {
-                            FirstName = model.FirstName,
-                            University = "", 
-                            Email = model.Email,
-                            InterviewScore = 0,
-                            InterviewFeedback = "",
-                            Evolution1Score = "",
-                            Evolution1Feedback = "",
-                            Evolution2Score = "",
-                            Evolution2Feedback = "",
-                            Accomplishments = "",
-                            GPA = 0,
-                            ProjectDetails = "",
-                            AssignedTeam = "",
-                            Mentor = "",
-                            UploadCV = "",
-                            Status = "",
-                            Role = "Intern",
-                        });
-                    }
 
                     // Send welcome email to the registered user
                     string emailSubject = "Welcome to Xternship";
