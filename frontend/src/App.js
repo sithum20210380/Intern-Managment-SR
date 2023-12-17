@@ -5,6 +5,7 @@ import InternProfile from './pages/Dashboard/InternProfile';
 import Users from './pages/Dashboard/Users';
 import UserDetails from './pages/Dashboard/Users/UserDetails';
 import ManageOrganizations from './pages/Dashboard/ManageOrganizations';
+import EvaluationForm from './pages/Dashboard/Evaluation';
 import { Layout } from 'antd';
 import Sidebar from './pages/SideBar';
 
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/user-details/:userId" component={UserDetails} />
                 <Route path="/internProfiles" component={InternProfile} />
                 <Route path="/organizations" component={ManageOrganizations} />
+                <Route path="/evaluation" component={EvaluationForm} />
                 <Route path="/logout" />
               </Content>
             </Layout>
